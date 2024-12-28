@@ -1,0 +1,26 @@
+#!/bin/bash
+
+sudo yum install -y java-21-openjdk-headless
+echo
+echo Java Installed.
+echo
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key
+sudo yum upgrade
+sudo yum install -y jenkins
+sudo systemctl daemon-reload
+echo
+echo Jenkins installation complete.
+echo
+sudo systemctl start jenkins
+echo
+echo Jenkins started.
+echo
+sudo systemctl enable jenkins
+echo
+echo Jenkins enabled.
+echo
+echo Installation Complete.
+echo
+echo "$(sudo cat '/var/lib/jenkins/secrets/initialAdminPassword')"

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+sudo yum remove -y jenkins
+sudo yum remove -y java-21-openjdk-headless
+echo
+echo Jenkins removed.
+

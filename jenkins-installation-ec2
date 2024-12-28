@@ -1,0 +1,13 @@
+#!/bin/bash
+#Don't include sudo as ec2 runs user data as root
+
+yum install -y java-21
+wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat/jenkins.io-2023.key
+yum upgrade
+yum install jenkins
+systemctl daemon-reload
+systemctl start jenkins
+systemctl enable jenkins
+

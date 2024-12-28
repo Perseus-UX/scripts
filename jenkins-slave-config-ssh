@@ -1,0 +1,7 @@
+#!/bin/bash
+
+mkdir /opt/jenkins
+yum install -y java-21
+cd /root/.ssh
+ssh-keygen -f id_rsa
+pubkey="$(sudo cat id_rsa.pub)" | echo $pubkey >> id_rsa
