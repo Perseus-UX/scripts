@@ -1,0 +1,2 @@
+# Remove all containers at once
+docker rm $(docker ps -a | awk '{print $12}')
