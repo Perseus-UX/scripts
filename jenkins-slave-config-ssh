@@ -2,6 +2,8 @@
 
 mkdir /opt/jenkins
 yum install -y java-21
-cd /root/.ssh
-ssh-keygen -f id_rsa
-pubkey="$(sudo cat id_rsa.pub)" | echo $pubkey >> id_rsa
+ssh-keygen -f /root/.ssh/slavekeys -N ""
+echo $(cat /root/.ssh/slavekeys.pub) >> /root/.ssh/authorized_keys
+dnf -y install dnf-plugins-core
+dnf config-manager --add-repo https://download.docker.com/linux/rhel/docker-ce.repo
+yum install -y docker
